@@ -7,14 +7,6 @@ typedef struct {
     GLuint vert;
     GLuint frag;
     GLuint prog;
-
-    struct {
-        GLuint vPosition;
-    } attrib;
-
-    struct {
-        
-    } uniform;
 } program_type;
 
 program_type create_shader_program(const GLchar *vertsrc, const GLchar *fragsrc);

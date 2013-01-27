@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include "shader.h"
 #include "util.h"
 
@@ -12,10 +13,8 @@ program_type create_shader_program_from_file(char *vertpath, char *fragpath) {
 
 program_type create_shader_program(const GLchar *vertsrc, const GLchar *fragsrc) {
     program_type shader;
-    GLint testval;
 
     /* Build the program */
-    char infolog[1056];
     shader.vert = glCreateShader(GL_VERTEX_SHADER);
     glShaderSource(shader.vert, 1, &vertsrc, 0);
     glCompileShader(shader.vert);
@@ -30,9 +29,6 @@ program_type create_shader_program(const GLchar *vertsrc, const GLchar *fragsrc)
     glAttachShader(shader.prog, shader.vert);
     glAttachShader(shader.prog, shader.frag);
     glLinkProgram(shader.prog);
-    CHECK_GL();
-
-    shader.attrib.vPosition = glGetAttribLocation(shader.prog, "vPosition");
     CHECK_GL();
 
     return shader;
